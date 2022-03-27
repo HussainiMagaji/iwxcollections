@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.icon">
+    <link rel='stylesheet' href='/styles/home.css' />
+  </head>
+  <body>
+
+    <%- include("navbar.html"); -%>
+
+    <!--News-feed-->
+    <section id="newsfeed">
+      <img id="banner" src="/images/banners/0.png">
+    </section>
+
+    <!--Categories-->
+    <div id="category-header">CATEGORIES</div>
+      <section id="categories">
+
+	<!-----------COL-1------------>
+	<div class="col">
+	  <div class="category-item">
+	    <img src="/images/home/shopping_bag.svg"><br><span>Random</span>
+	  </div>
+	  <div class="category-item">
+	    <img src="/images/home/Electric appliances.svg"><br><span>Electric</span>
+	  </div>
+	  <div class="category-item">
+	    <img src="/images/home/Kitchen.svg"><br><span>Kitchen</span>
+	  </div>
+	</div>
+	<!---------------------------->
+
+	<!-----------COL-2------------>
+	<div class="col">
+	  <div class="category-item">
+	    <img src="/images/home/Electronics.svg"><br><span>Electronics</span>
+	  </div>
+	  <div class="category-item">
+	    <img src="/images/home/Clothing.svg"><br><span>Fashion</span>
+	  </div>
+	  <div class="category-item">
+	    <img src="/images/home/Food.svg"><br><span>Food</span>
+	  </div>
+	</div>
+	<!---------------------------->
+
+      </section>
+	<script src="/scripts/home.js"></script>
+		
+	<%- include("footer.html"); -%> 
+
+  </body>
+</html>

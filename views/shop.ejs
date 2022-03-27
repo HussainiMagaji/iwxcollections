@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%- include("navbar.html"); -%>
+
+    <style> @import "/styles/shop.css"; </style>
+    <div id="storefront">
+      <div class="col">
+        <% for(let i = 0; i < 30; i+=2) { %>
+	 <div id= <%= products[i].id %> class="products">
+	    <img class="img" src= <%= "/images/album/" + products[i].url %> >
+	    <span class="name"> <%= products[i].name %> </span><br>
+	    <span class="p_price">&#8358;<%= (products[i].price + ((15/100) * products[i].price)).toLocaleString( ) %> </span><br>
+	    <span class="price">&#8358;<%= (products[i].price + ((10/100) * products[i].price)).toLocaleString( ) %> </span>
+	 </div>
+        <% } %>
+      </div>
+      <div class="col">
+        <% for(let i = 1; i < 30; i+=2) { %>                            
+	 <div id= <%= products[i].id %> class="products">                               
+	   <img class="img" src= <%= "/images/album/" + products[i].url %> >
+	   <span class="name"> <%= products[i].name %> </span><br>
+	   <span class="p_price">&#8358;<%= (products[i].price + ((15/100) * products[i].price)).toLocaleString( ) %> </span><br>
+           <span class="price">&#8358;<%= (products[i].price + ((10/100) * products[i].price)).toLocaleString( ) %> </span>
+         </div>
+        <% } %>
+       </div>
+   </div>
+   <script src="/scripts/shop.js"></script>
+
+   <%- include("footer.html") -%>
+  </body>
+</html>

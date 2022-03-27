@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Account</title>
+    <style> @import "/styles/account.css"; </style>
+  </head>
+
+  <body>
+  <%- include("navbar.html"); -%>
+
+    <br>
+    <br>
+
+    <div id="account">
+
+      <div id="profile">
+	<header>PROFILE</header>
+	<img id="pic" src="/images/navbar/account.svg">
+	<span id="email-holder"><%= email %></span>
+      </div>
+	  
+      <div id=orders-holder></div>
+
+    </div>
+
+    <!--<script src="/scripts/account.js"></script>-->
+  </body>
+</html>
+

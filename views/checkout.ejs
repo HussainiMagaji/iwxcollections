@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style> @import "/styles/checkout.css"; </style>
+  </head>
+  <body>
+    <%- include("navbar.html"); -%>
+
+    <form id="orderForm" onsubmit="return false">
+
+      <div id="details">
+        <label for="name">Name:</label>
+	<input id="name" name="name" type="text" required><br>
+        <label for="phone">Phone No.:</label>
+	<input id="phone" name="phone" type="tel"required><br>
+	<label for="state">State:</label>
+	<select  id="state" name="state">
+	  <option>Abuja</option>
+	  <option>Adamawa</option>
+	  <option>Bauchi</option>
+	  <option>Borno</option>
+	  <option>Gombe</option>
+	  <option>Jigawa</option>
+	  <option>Kaduna</option>
+	  <option>Kano</option>
+	  <option>Katsina</option>
+	  <option>Kebbi</option>
+	  <option>Niger</option>
+	  <option>Nassarawa</option>
+	  <option>Plateau</option>
+	  <option>Sokoto</option>
+	  <option>Yobe</option>
+	  <option>Zamfara</option>
+	</select><br>
+	<label for="lga">LGA:</label>
+	<input id="lga" name="lga" type="text">
+        <label for="address">Address:</label>
+	<input id="address" name="address"type="text"required>
+      </div><br>
+
+      <div id="fee-details">
+	<span>Subtotal: &#8358;<%= subtotal %></span>
+	<span>Shipping fee: &#8358;<%= shipping_fee %></span>
+	<span>Gross total:  &#8358;<%= gross_total %></span>
+      </div><br>
+
+      <input id="proceed" type="submit" value="PROCEED">
+
+    </form>
+
+    <script src="/scripts/checkout.js"></script>
+
+    <%- /*include("footer.html");*/ -%>
+    </body>
+</html>

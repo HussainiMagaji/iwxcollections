@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style> @import "/styles/cart.css"; </style>
+  </head>
+  <body>
+    <%- include("navbar.html"); -%>
+
+    <div id="cartholder">
+    <% cart.forEach(item => { %>
+         <div id= <%= item.id %> class="tab" >
+	   <img src= <%= `/images/album/${item.url}` %> ><br>
+	   Price: &#8358;<span><%= (((10/100) * item.price) + item.price).toLocaleString( ) %> </span><br>
+	   Quantity:<span id="quantityholder"> <%= item.quantity %> </span>
+	   <button class="delete">
+             <img class="delete" src="/images/cart/delete.svg">
+           </button>
+	 </div>
+    <% }); %>
+    </div>
+    <br>
+
+    <div id="itemholder">
+    <% if(product) { %>
+      <div id= <%= product.id %> class="tab" >
+        <img src= <%= `/images/album/${product.url}` %> ><br>
+        Price: &#8358;<span><%= (((10/100) * product.price) + product.price).toLocaleString( ) %> </span><br>
+        Quantity: <span id="quantityholder"></span>
+        <input id="minus" type="button" value="-">
+	<input id="quantity"type="text"value= <%= `${quantityValue}` %> min="1" max="5">
+        <input id="plus" type="button" value="+">
+        <br>
+        <button id="append">
+	  <img id="append" src="/images/cart/addtocart.svg">
+        </button>
+      </div>
+    <% } %>
+    </div>
+
+    <% if(cart.length) { %>
+    <input id="checkout" type="button" value="CHECKOUT">
+    <% } %>
+
+    <script src="/scripts/cart.js"></script>
+
+    <%- include("footer.html"); -%>
+  </body>
+</html>
