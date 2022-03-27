@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: purple;
+    font-size: 40px;
+    background-color: rgba(190, 230, 233, 0.349);
+}
+
+div {
+    border: "1px solid purple";
+    border-radius: 20px;
+    text-align: center;
+}
+
+#pic {
+    width: 40%;
+    height: 40%;
+    border: 5px solid purple;
+    border-radius: 50%;
+}
