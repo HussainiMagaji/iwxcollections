@@ -43,6 +43,7 @@ let idx = 0;
 //=======================================================
 
 let cart = [];
+let orders = [];
 let user = { };
 let login_status = 0;
 let login_referer = "";
@@ -81,10 +82,16 @@ app.get("/cart", (req, res) => {
 app.get("/login", (req, res) => {
   login_referer = req.headers.referer;
   if(login_status) { //if user is already logged in
-     res.render("account.ejs", { email: user.email });
+     res.redirect("/account");
      return;
   }
   res.render("login.ejs");
+});
+app.get("/account", (req, res) => {
+  res.render("account.ejs", {
+     email: user.email,
+     orders: orders
+  });
 });
 app.get("/checkout", (req, res) => {
   let subtotal = 0;
@@ -125,6 +132,26 @@ app.get("/cart/:id", (req, res) => {
 	quantityValue: quantityValue
   });
 });
+app.get("/webhook", (req, res) => {
+  if(!login_status) {
+     res.redirect("/login");
+     return;
+  }
+  orders.forEach(order => { //check for duplicate order
+    if(order.id == req.query.orderID) {
+       res.redirect("/login");
+       return;
+    }
+  });
+  orders.push({
+     id: req.query.orderID,
+     rrr: req.query.RRR, 
+     date: new Date( ).toString( ).slice(0, 33)
+  });
+  //send cart and orders to db for management
+  cart = []; //empty cart
+  res.redirect("/account"); 
+});
 
 app.post("/cart", (req, res) => {
   let product = req.body;
@@ -142,8 +169,8 @@ app.post("/order", async (req, res) => {
       response = await initiatePayment(user); 
     } break;
     default: {
-      res.redirect("/checkout");
-      return;
+      //res.redirect("/checkout");
+      //return;
     }
   }
   res.send(response);
@@ -209,3 +236,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

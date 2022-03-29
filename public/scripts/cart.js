@@ -1,7 +1,7 @@
 {//==========================================================
 let perfEntries = performance.getEntriesByType('navigation');
 if(perfEntries.length && perfEntries[0].type === 'back_forward') {
-  location.href = "http://localhost:3000/shop";
+  location.href = "/shop";
 }
 
 
@@ -52,7 +52,7 @@ let handler = {
 	let target = event.target;
 	if(target.classList.contains("delete")) {
 	   let targetDiv = target.closest("div");
-	   fetch(`cart/${targetDiv.id}`, {
+	   fetch(`/cart/${targetDiv.id}`, {
 		method: "DELETE"
 	   }).then(res => res.text( )).then(json => {
 		targetDiv.remove( );
@@ -65,6 +65,6 @@ let handler = {
 
 window["itemholder"].addEventListener("click", handler);
 window["cartholder"].addEventListener("click", ( ) => handler.deleteItem(event));
-window["checkout"].addEventListener("click", ( ) => location.href = "checkout");
+window["checkout"].addEventListener("click", ( ) => location.href = "/checkout");
 
 };//=========================================================

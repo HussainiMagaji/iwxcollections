@@ -4,7 +4,7 @@ const urls = {
    tokenUrl: `${baseUrl}/uaasvc/uaa/token`,
    invoiceUrl: `${baseUrl}/echannelsvc/merchant/api/paymentinit`,
    paymentUrl: "https://www.remitademo.net/remita/ecomm/finalize.reg",
-   webhookUrl: "https://webhook.site/8ea3d50b-00d2-4f64-bf88-cea393197f24"
+   webhookUrl: "http://www.iwxcollections.ml/webhook"
 };
 
 const credentials = {

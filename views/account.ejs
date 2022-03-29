@@ -20,7 +20,22 @@
 	<span id="email-holder"><%= email %></span>
       </div>
 	  
-      <div id=orders-holder></div>
+      <table id=orders-holder>
+        <thead>
+          <td>ID</td>
+          <td>RRR</td>
+          <td>DATE</td>
+        </thead>
+        <tbody>
+        <% orders.forEach(order => { %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.rrr %></td>
+            <td><%= order.date %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
 
     </div>
 
