@@ -1,5 +1,6 @@
 let cookieParser = require('cookie-parser');
 let createError = require('http-errors');
+let compression = require('compression');
 let session = require('express-session');
 let express = require('express');
 let logger = require('morgan');
@@ -44,11 +45,12 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.disable(`X-Powered-By`);
+app.disable('x-powered-by');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(compression({ threshold: 1 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -64,7 +66,7 @@ app.use('*', (req, res, next) => {
      req.session.user = { };
      req.session.user.orders = [];
      req.session.cart = new Cart( );
-     console.log(`\nNew Client connected.\nID: ${req.sessionID}\n`);
+     console.log(`\nNew Client connected.\n${req.headers['user-agent']}\nID: ${req.sessionID}\n`);
   }
   next( );
 })
@@ -151,9 +153,6 @@ app.get("/checkout", (req, res) => {
 app.get("/webhook", (req, res) => {
   let cart = req.session.cart,
       orders = req.session.user.orders;
-
-  console.log(`\nReferer: ${req.headers['referer']}`);
-  console.log(req.session);
 
   orders.forEach(order => { //check for duplicate order
     if(order.id == req.query.orderID) {
