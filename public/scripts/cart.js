@@ -1,4 +1,5 @@
-{//==========================================================
+{//========================================================
+
 let perfEntries = performance.getEntriesByType('navigation');
 if(perfEntries.length && perfEntries[0].type === 'back_forward') {
   location.href = "/shop";
@@ -37,15 +38,14 @@ let handler = {
 	 }
       });
       item.getElementsByTagName("span")[1].append(quantity);
-try { //TODO
       fetch("/cart", {
 	 method: "POST",
 	 headers: {
 	    "Content-Type": "application/json"
 	 },
 	 body:JSON.stringify({id:item.id, quantity: quantity})
-      }).then(res => res.text( )).then( location.href = "/cart" );
-} catch(err) { alert(err); } //TODO
+      }).then(res => res.text( )).then(location.href = "/cart").catch(err => { location.href = "/cart"; });
+
    },
 
    deleteItem(event) {
