@@ -45,7 +45,7 @@ let handler = {
 	 },
 	 body:JSON.stringify({id:item.id, quantity: quantity})
       }).then(res => res.text( )).then(location.href = "/cart").catch(err => { location.href = "/cart"; });
-
+      location.href = "/cart";
    },
 
    deleteItem(event) {
